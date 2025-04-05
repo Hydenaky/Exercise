@@ -1,1 +1,33 @@
-<p>table-clients works!</p>
+<div class="card">
+    <p-table [value]="products" [tableStyle]="{ 'min-width': '50rem' }">
+        <ng-template #header>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Last Name</th>
+                <th>ID Type</th>
+                <th>ID Number</th>
+                <th>Country</th>
+                <th>Foreing</th>
+                <th></th>
+            </tr>
+        </ng-template>
+        <ng-template #body let-product>
+            <tr>
+                <td>{{product.id}}</td>
+                <td>{{ product.name }}</td>
+                <td>{{ product.lastname }}</td>
+                <td>{{ product.IDType}}</td>
+                <td>{{ product.IDNumber }}</td>
+                <td>{{ product.country}}</td>
+                <td>
+                    <p-toggleswitch [(ngModel)]="product.foreing"></p-toggleswitch>
+                </td>
+                <td>
+                    <p-button icon="pi pi-spin pi-cog " aria-label="Save" class="botonw"></p-button>
+                    <p-button icon=" pi pi-trash" aria-label="Save" class="margin-left: 30px" />
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>

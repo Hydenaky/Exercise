@@ -48,6 +48,10 @@ import { InputNumberModule } from 'primeng/inputnumber';
 
 
 // de aqui pa bajo
+import { TableModule } from 'primeng/table';
+import { IconFieldModule } from 'primeng/iconfield';
+import { InputIconModule } from 'primeng/inputicon';
+import { ToggleSwitchModule } from 'primeng/toggleswitch';
 const MaterialComponents=[
     ButtonModule,
     InputGroupModule,
@@ -56,7 +60,11 @@ const MaterialComponents=[
     FormsModule,
     InputTextModule,
     SelectModule,
-    InputNumberModule
+    InputNumberModule,
+    TableModule,
+    IconFieldModule,
+    InputIconModule,
+    ToggleSwitchModule
 ]
 @NgModule({
 
