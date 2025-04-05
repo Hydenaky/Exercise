@@ -5,17 +5,20 @@ import { ClientsRoutingModule } from './clients-routing.module';
 import { ClientsComponent } from './components/clients/clients.component';
 import { FormComponent } from './components/form/form.component';
 import { TableClientsComponent } from './components/table-clients/table-clients.component';
+import { MaterialModule } from '../material/material.module';
 
 
 @NgModule({
   declarations: [
     ClientsComponent,
     FormComponent,
-    TableClientsComponent
+    TableClientsComponent,
+    
   ],
   imports: [
     CommonModule,
-    ClientsRoutingModule
+    ClientsRoutingModule,
+    MaterialModule
   ]
 })
 export class ClientsModule { }
