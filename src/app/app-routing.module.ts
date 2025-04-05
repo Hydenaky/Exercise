@@ -5,6 +5,10 @@ const routes: Routes = [
   {
     path:'Clients',
     loadChildren:()=>import('./clients/clients.module').then(childRout =>childRout.ClientsModule)
+  },
+  {
+    path: '**',
+    redirectTo: 'Clients'
   }
 ];
 
