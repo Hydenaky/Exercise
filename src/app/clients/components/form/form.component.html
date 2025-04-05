@@ -1,1 +1,26 @@
-<p>form works!</p>
+<div class="card grid grid-cols-1 md:grid-cols-2 gap-4">
+    <p-inputgroup>
+        <p-inputgroup-addon>
+            <i class="pi pi-user"></i>
+        </p-inputgroup-addon>
+        <input pInputText [(ngModel)]="text1" placeholder="Username" />
+    </p-inputgroup>
+
+    <p-inputgroup>
+        <p-inputgroup-addon>$</p-inputgroup-addon>
+        <p-inputnumber [(ngModel)]="number" placeholder="Price" />
+        <p-inputgroup-addon>.00</p-inputgroup-addon>
+    </p-inputgroup>
+
+    <p-inputgroup>
+        <p-inputgroup-addon>www</p-inputgroup-addon>
+        <input pInputText  [(ngModel)]="text2" placeholder="Website" />
+    </p-inputgroup>
+
+    <p-inputgroup>
+        <p-inputgroup-addon>
+            <i class="pi pi-map"></i>
+        </p-inputgroup-addon>
+        <p-select [(ngModel)]="selectedCity" [options]="cities" optionLabel="name" placeholder="City" />
+    </p-inputgroup>
+</div>
