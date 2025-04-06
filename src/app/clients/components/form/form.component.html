@@ -1,26 +1,34 @@
-<div>
+<div class="form" [formGroup]="form">
     <p-inputgroup>
-        <p-inputgroup-addon>
-            <i class="pi pi-user"></i>
+        <input pInputText placeholder="Name" formControlName="Name"/>
+    </p-inputgroup>
+
+    <p-inputgroup>
+        <input pInputText placeholder="Lastname" formControlName="Lastname"/>
+    </p-inputgroup>
+
+    <p-inputgroup>
+        <p-inputgroup-addon *ngIf="form.value.IDType">
+            <i>{{form.value.IDType.code}}</i>
         </p-inputgroup-addon>
-        <input pInputText [(ngModel)]="text1" placeholder="Username" />
+        <p-select [options]="IDType" optionLabel="name" placeholder="IDType" formControlName="IDType"/>
     </p-inputgroup>
 
     <p-inputgroup>
-        <p-inputgroup-addon>$</p-inputgroup-addon>
-        <p-inputnumber [(ngModel)]="number" placeholder="Price" />
-        <p-inputgroup-addon>.00</p-inputgroup-addon>
+        <p-inputnumber type="number" placeholder="ID Number" formControlName="IDNumber" />
     </p-inputgroup>
 
     <p-inputgroup>
-        <p-inputgroup-addon>www</p-inputgroup-addon>
-        <input pInputText  [(ngModel)]="text2" placeholder="Website" />
-    </p-inputgroup>
-
-    <p-inputgroup>
-        <p-inputgroup-addon>
-            <i class="pi pi-map"></i>
+        <p-inputgroup-addon *ngIf="form.value.Country">
+            <i>{{form.value.Country.code}}</i>
         </p-inputgroup-addon>
-        <p-select [(ngModel)]="selectedCity" [options]="cities" optionLabel="name" placeholder="City" />
+        <p-select [options]="countries" optionLabel="name" placeholder="Country" (onChange)="event()" formControlName="Country"/>
+        <p-inputgroup-addon *ngIf="form.value.Country">
+            {{foreing ? 'Local' : 'Foreing'}}
+        </p-inputgroup-addon>
     </p-inputgroup>
+
+    <p-button label="Create" (onClick)="submit(true)"/>
+    <p-button label="Update" (onClick)="submit(false)"/>
+    <p-button label="Delete" (onClick)="delete()"/>
 </div>

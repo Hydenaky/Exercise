@@ -1,9 +1,18 @@
+export interface DocumentType {
+    name: string;
+    code: string;
+  }
+  
+export interface Country {
+    name: string;
+    code: string;
+  }
 export interface Client {
     id: number,
     name: string,
     lastname: string,
-    IDType: string,
+    IDType: DocumentType,
     IDNumber: number,
-    country: string,
+    Country: Country,
     foreing: boolean
 }

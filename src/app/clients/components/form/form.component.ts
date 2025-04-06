@@ -1,9 +1,7 @@
 import { Component } from '@angular/core';
-
-interface City {
-  name: string;
-  code: string;
-}
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { Country, DocumentType } from '../../../interfaces/interfaces';
+import { ClientsService } from '../../services/clients.service';
 
 @Component({
   selector: 'app-form',
@@ -12,19 +10,46 @@ interface City {
   styleUrl: './form.component.scss'
 })
 export class FormComponent {
-  text1: string | undefined;
+  foreing: boolean | undefined;
 
-  text2: string | undefined;
+  countries: Country[];
+  IDType: DocumentType[];
+  form: FormGroup;
 
-  number: string | undefined;
+  constructor(private formBuilder: FormBuilder, private service: ClientsService){
+    this.form = formBuilder.group({
+      id: [0],
+      Name: [''],
+      Lastname: [''],
+      IDType: [''],
+      IDNumber: [''],
+      Country: [''],
+    })
 
-  selectedCity: City | undefined;
+    this.countries = this.service.countries;
+    this.IDType = service.documentTypes;
+  }
 
-  cities: City[] = [
-      { name: 'New York', code: 'NY' },
-      { name: 'Rome', code: 'RM' },
-      { name: 'London', code: 'LDN' },
-      { name: 'Istanbul', code: 'IST' },
-      { name: 'Paris', code: 'PRS' },
-  ];
+
+  event(){
+    if (this.form.value.Country.code !== 'CO') {
+      this.foreing = false;
+    } else {
+      this.foreing = true;
+    }
+  }
+
+  submit(bool: boolean){
+    if (bool) {
+      this.service.create(this.form.value);      
+    } else {
+      this.service.update(1,this.form.value)
+    }
+  }
+
+  //service test
+  delete(){
+    this.service.delete(1)
+  }
+
 }

@@ -10,8 +10,8 @@ import { Client } from '../../../interfaces/interfaces';
 })
 export class TableClientsComponent {
   products: Client[]=[
-    {id:1,name:"Juanito",lastname:"Alimaña",IDType:"CC",IDNumber:230212,country:"Colombia",foreing:false},
-    {id:2,name:"Pedro",lastname:"Castillo",IDType:"CC",IDNumber:1000321,country:"España",foreing:true}
+    {id:1,name:"Juanito",lastname:"Alimaña",IDType:{ name: 'Cédula de ciudadanía', code: 'CC' },IDNumber:230212,Country:{name:"Colombia", code:''},foreing:false},
+    {id:2,name:"Pedro",lastname:"Castillo",IDType:{ name: 'Cédula de ciudadanía', code: 'CC' },IDNumber:1000321,Country:{name:"Spain", code:''},foreing:true}
   ];
 
     constructor(private clientsService: ClientsService) {
