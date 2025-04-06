@@ -1,5 +1,5 @@
 <div class="card">
-    <p-table [value]="products" [tableStyle]="{ 'min-width': '50rem' }">
+    <p-table [value]="clients" [tableStyle]="{ 'min-width': '50rem' }">
         <ng-template #header>
             <tr>
                 <th>ID</th>
@@ -15,11 +15,11 @@
         <ng-template #body let-product>
             <tr>
                 <td>{{product.id}}</td>
-                <td>{{ product.name }}</td>
-                <td>{{ product.lastname }}</td>
-                <td>{{ product.IDType.name}}</td>
-                <td>{{ product.IDNumber }}</td>
-                <td>{{ product.Country.name}}</td>
+                <td>{{product.Name }}</td>
+                <td>{{product.Lastname}}</td>
+                <td>({{product.IDType.code}}) {{product.IDType.name}}</td>
+                <td>{{product.IDNumber }}</td>
+                <td>{{product.Country.name}}</td>
                 <td>
                     <p-toggleswitch [(ngModel)]="product.foreing"></p-toggleswitch>
                 </td>

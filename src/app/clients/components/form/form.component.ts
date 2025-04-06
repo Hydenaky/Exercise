@@ -41,7 +41,7 @@ export class FormComponent {
 
   submit(bool: boolean){
     if (bool) {
-      this.service.create(this.form.value);      
+      this.service.create(this.form.value);          
     } else {
       this.service.update(1,this.form.value)
     }
