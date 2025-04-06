@@ -12,20 +12,20 @@
                 <th></th>
             </tr>
         </ng-template>
-        <ng-template #body let-product>
+        <ng-template #body let-client>
             <tr>
-                <td>{{product.id}}</td>
-                <td>{{product.Name }}</td>
-                <td>{{product.Lastname}}</td>
-                <td>({{product.IDType.code}}) {{product.IDType.name}}</td>
-                <td>{{product.IDNumber }}</td>
-                <td>{{product.Country.name}}</td>
+                <td>{{client.id}}</td>
+                <td>{{client.Name }}</td>
+                <td>{{client.Lastname}}</td>
+                <td>({{client.IDType.code}}) {{client.IDType.name}}</td>
+                <td>{{client.IDNumber }}</td>
+                <td>{{client.Country.name}}</td>
                 <td>
-                    <p-toggleswitch [(ngModel)]="product.foreing"></p-toggleswitch>
+                    <p-toggleswitch [(ngModel)]="client.foreing"></p-toggleswitch>
                 </td>
                 <td>
                     <p-button icon="pi pi-spin pi-cog " aria-label="Save" class="botonw"></p-button>
-                    <p-button icon=" pi pi-trash" aria-label="Save" class="margin-left: 30px" />
+                    <p-button icon=" pi pi-trash" (onClick)="delete(client.id)"/>
                 </td>
             </tr>
         </ng-template>

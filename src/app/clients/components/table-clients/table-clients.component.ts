@@ -15,4 +15,7 @@ export class TableClientsComponent {
       this.clientsService.user$.subscribe(client=> this.clients= client);    
     }
      
+    delete(id:number){
+      this.clientsService.deleteClient(id);
+    }
 }

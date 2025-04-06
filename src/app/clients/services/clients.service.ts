@@ -63,7 +63,7 @@ export class ClientsService {
     console.log(this.clientSubject.getValue());
     
   }
-  delete(id: number){
+  deleteClient(id: number){
     this.clients = this.clientSubject.value;
     this.clients.splice(id, 1)
     this.clientSubject.next([...this.clients])

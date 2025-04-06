@@ -49,7 +49,7 @@ export class FormComponent {
 
   //service test
   delete(){
-    this.service.delete(1)
+    this.service.deleteClient(1)
   }
 
 }
