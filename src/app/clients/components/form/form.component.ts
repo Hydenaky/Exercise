@@ -46,10 +46,4 @@ export class FormComponent {
       this.service.update(1,this.form.value)
     }
   }
-
-  //service test
-  delete(){
-    this.service.deleteClient(1)
-  }
-
 }

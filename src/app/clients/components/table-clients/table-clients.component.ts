@@ -9,13 +9,15 @@ import { Client } from '../../../interfaces/interfaces';
   styleUrl: './table-clients.component.scss'
 })
 export class TableClientsComponent {
-  clients: Client[]=[];
+  clients: Client[];
 
     constructor(private clientsService: ClientsService) {
       this.clientsService.user$.subscribe(client=> this.clients= client);    
     }
-     
     delete(id:number){
       this.clientsService.deleteClient(id);
+      this.clients.forEach(element => {
+        console.log(element);
+      });
     }
 }
