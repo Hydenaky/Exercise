@@ -56,7 +56,8 @@ export class ClientsService {
     console.log(this.clientSubject.getValue());
   }
 
-  update(id: number, client: Client){ 
+  updateClient(client: Client){ 
+    let id = client.id;
     this.clients = this.clientSubject.value;
     this.clients[id] = client;
     this.clientSubject.next([...this.clients])
@@ -64,9 +65,11 @@ export class ClientsService {
     
   }
   deleteClient(id: number){
-    this.clients = this.clientSubject.value;
-    this.clients.splice(id, 1)
-    this.clientSubject.next([...this.clients])
-    console.log(this.clientSubject.getValue());
+    let client =this.clientSubject.value;
+    let idupdate = client.findIndex(element => element.id==id);
+    client.splice(idupdate,1);
+
+    this.clientSubject.next([...client]);
+    console.log("YA SE ELIMINO");
   }
 }

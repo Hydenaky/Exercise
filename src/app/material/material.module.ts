@@ -54,7 +54,9 @@ import { TableModule } from 'primeng/table';
 import { IconFieldModule } from 'primeng/iconfield';
 import { InputIconModule } from 'primeng/inputicon';
 import { ToggleSwitchModule } from 'primeng/toggleswitch';
-const MaterialComponents=[
+import {MatDialogModule} from '@angular/material/dialog';
+const MaterialComponents=[ 
+    MatDialogModule,
     ButtonModule,
     InputGroupModule,
     InputGroupAddonModule,
@@ -74,11 +76,12 @@ const MaterialComponents=[
     imports: [MaterialComponents],
     providers: [
         provideAnimationsAsync(),
-            providePrimeNG({
+        providePrimeNG({
                 theme: {
                     preset: Aura
                 }
-            })
+            }),
+        
       ],
     exports: [MaterialComponents]
 })

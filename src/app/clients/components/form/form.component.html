@@ -1,32 +1,36 @@
-<div class="form" [formGroup]="form">
-    <p-inputgroup>
-        <input pInputText placeholder="Name" formControlName="Name"/>
-    </p-inputgroup>
+<div style="background-color: rgb(33, 32, 32);display: flex;justify-content: center;flex-direction: column;align-items: center; height: 100%">
+    <form [formGroup]="form" style="display: flex; flex-direction: column; justify-content: space-between; height: 400px; width: 260px;" >
+        <h1 style="text-align: center;">ADD CLIENT</h1>
+        <p-inputgroup>
+            <input pInputText placeholder="Name" formControlName="Name" />
+        </p-inputgroup>
 
-    <p-inputgroup>
-        <input pInputText placeholder="Lastname" formControlName="Lastname"/>
-    </p-inputgroup>
+        <p-inputgroup>
+            <input pInputText placeholder="Lastname" formControlName="Lastname" />
+        </p-inputgroup>
+        <p-inputgroup>
+            <p-inputgroup-addon *ngIf="form.value.IDType">
+                <i>{{form.value.IDType.code}}</i>
+            </p-inputgroup-addon>
+            <p-select [options]="IDType" optionLabel="name" placeholder="IDType" formControlName="IDType" />
+        </p-inputgroup>
 
-    <p-inputgroup>
-        <p-inputgroup-addon *ngIf="form.value.IDType">
-            <i>{{form.value.IDType.code}}</i>
-        </p-inputgroup-addon>
-        <p-select [options]="IDType" optionLabel="name" placeholder="IDType" formControlName="IDType"/>
-    </p-inputgroup>
+        <p-inputgroup>
+            <p-inputnumber type="number" placeholder="ID Number" formControlName="IDNumber" />
+        </p-inputgroup>
 
-    <p-inputgroup>
-        <p-inputnumber type="number" placeholder="ID Number" formControlName="IDNumber" />
-    </p-inputgroup>
-
-    <p-inputgroup>
-        <p-inputgroup-addon *ngIf="form.value.Country">
-            <i>{{form.value.Country.code}}</i>
-        </p-inputgroup-addon>
-        <p-select [options]="countries" optionLabel="name" placeholder="Country" (onChange)="event()" formControlName="Country"/>
-        <p-inputgroup-addon *ngIf="form.value.Country">
-            {{foreing ? 'Local' : 'Foreing'}}
-        </p-inputgroup-addon>
-    </p-inputgroup>
-
-    <p-button label="Create" (onClick)="submit(true)"/>
+        <p-inputgroup>
+            <p-inputgroup-addon *ngIf="form.value.Country">
+                <i>{{form.value.Country.code}}</i>
+            </p-inputgroup-addon>
+            <p-select [options]="countries" optionLabel="name" placeholder="Country" (onChange)="event()"
+                formControlName="Country" />
+            <p-inputgroup-addon *ngIf="form.value.Country">
+                {{foreing ? 'Foreing' : 'Local'}}
+            </p-inputgroup-addon>
+        </p-inputgroup>
+        <div style="text-align: center;">
+            <p-button label="Create" (onClick)="createClient()" />
+        </div>
+    </form>
 </div>

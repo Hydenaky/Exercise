@@ -1,5 +1,4 @@
 <div class="card">
-    
     <p-table [value]="clients" [tableStyle]="{ 'min-width': '50rem' }">
         <ng-template #header>
             <tr>
@@ -25,8 +24,9 @@
                     <p-toggleswitch [(ngModel)]="client.foreing"></p-toggleswitch>
                 </td>
                 <td>
-                    <p-button icon="pi pi-spin pi-cog " aria-label="Save" class="botonw"></p-button>
-                    <p-button icon=" pi pi-trash" (onClick)="delete(client.id)"/>
+                    <p-button icon="pi pi-cog " aria-label="Save" class="botonw" type="submit"
+                        (onClick)="updateClient()"></p-button>
+                    <p-button icon=" pi pi-trash" (onClick)="deleteClient(client.id)" />
                 </td>
             </tr>
         </ng-template>

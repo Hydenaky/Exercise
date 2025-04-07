@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { ClientsService } from '../../services/clients.service';
 import { Client } from '../../../interfaces/interfaces';
+import { DialogService } from 'primeng/dynamicdialog';
+import { MatDialog } from '@angular/material/dialog';
+import { FormComponent } from '../form/form.component';
 
 @Component({
   selector: 'app-table-clients',
@@ -11,13 +14,19 @@ import { Client } from '../../../interfaces/interfaces';
 export class TableClientsComponent {
   clients: Client[];
 
-    constructor(private clientsService: ClientsService) {
+    constructor(private clientsService: ClientsService, private dialog: MatDialog) {
       this.clientsService.user$.subscribe(client=> this.clients= client);    
     }
-    delete(id:number){
+
+    deleteClient(id:number){
       this.clientsService.deleteClient(id);
       this.clients.forEach(element => {
         console.log(element);
       });
     }
-}
+
+    updateClient(){
+      this.dialog.open(FormComponent,{height:'500px', width:'500px'})
+      // this.clientsService.updateClient(client)
+    }
+  }

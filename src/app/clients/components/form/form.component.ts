@@ -17,13 +17,14 @@ export class FormComponent {
   form: FormGroup;
 
   constructor(private formBuilder: FormBuilder, private service: ClientsService){
-    this.form = formBuilder.group({
+    this.form = this.formBuilder.group({
       id: [0],
       Name: [''],
       Lastname: [''],
       IDType: [''],
       IDNumber: [''],
       Country: [''],
+      foreing : ['']
     })
 
     this.countries = this.service.countries;
@@ -33,17 +34,17 @@ export class FormComponent {
 
   event(){
     if (this.form.value.Country.code !== 'CO') {
-      this.foreing = false;
-    } else {
       this.foreing = true;
+      this.form.get('foreing')?.setValue(this.foreing);
+    } else {
+      this.foreing = false;
+      this.form.get('foreing')?.setValue(this.foreing);
     }
   }
 
-  submit(bool: boolean){
-    if (bool) {
-      this.service.create(this.form.value);          
-    } else {
-      this.service.update(1,this.form.value)
-    }
+  createClient(){
+    this.event();
+    this.service.create(this.form.value);   
+    console.log(this.foreing);    
   }
 }
