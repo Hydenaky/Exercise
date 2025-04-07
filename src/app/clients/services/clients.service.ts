@@ -12,7 +12,7 @@ export class ClientsService {
   private clientSubject = new BehaviorSubject<Client[]>([]);
   user$ = this.clientSubject.asObservable();
   clients: Client[] = [];
-  counter: number;
+  counter: number = 0;
 
   dialogRef: MatDialogRef<FormComponent> | undefined;
 
@@ -63,9 +63,10 @@ export class ClientsService {
   }
 
   create(client: Client) {
+    client.id = this.counter++;
     this.clientSubject.next([...this.clientSubject.getValue(), client]);
-    this.clients = this.clientSubject.value;
-    this.clients.forEach((e, i) => { e.id = i });
+    // this.clients = this.clientSubject.value;
+    // this.clients.forEach((e, i) => { e.id = i });
     this.closeDialog();
   }
 
