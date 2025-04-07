@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Country, DocumentType } from '../../../interfaces/interfaces';
+import { Country, DocumentType, ModalClient } from '../../../interfaces/interfaces';
 import { ClientsService } from '../../services/clients.service';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-form',
@@ -16,19 +17,19 @@ export class FormComponent {
   IDType: DocumentType[];
   form: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private service: ClientsService){
+  constructor(private formBuilder: FormBuilder, private serviceClient: ClientsService,@Inject(MAT_DIALOG_DATA) public data: ModalClient){
     this.form = this.formBuilder.group({
-      id: [0],
-      Name: [''],
-      Lastname: [''],
-      IDType: [''],
-      IDNumber: [''],
-      Country: [''],
-      foreing : ['']
+      id: [this.data?.client?.id || 0],
+      Name: [this.data?.client?.Name || ''],
+      Lastname: [this.data?.client?.Lastname || ''],
+      IDType: [this.data?.client?.IDType || ''],
+      IDNumber: [this.data?.client?.IDNumber || ''],
+      Country: [ this.data?.client?.Country || ''],
+      foreing : [this.data?.client?.foreing || '']
     })
 
-    this.countries = this.service.countries;
-    this.IDType = service.documentTypes;
+    this.countries = this.serviceClient.countries;
+    this.IDType = serviceClient.documentTypes;
   }
 
 
@@ -44,7 +45,10 @@ export class FormComponent {
 
   createClient(){
     this.event();
-    this.service.create(this.form.value);   
-    console.log(this.foreing);    
+    this.serviceClient.create(this.form.value);   
+  }
+
+  updateClient(){
+    this.serviceClient.updateClient(this.form.value,this.data?.client?.id)
   }
 }

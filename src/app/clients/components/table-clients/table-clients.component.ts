@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { ClientsService } from '../../services/clients.service';
 import { Client } from '../../../interfaces/interfaces';
-import { DialogService } from 'primeng/dynamicdialog';
 import { MatDialog } from '@angular/material/dialog';
 import { FormComponent } from '../form/form.component';
 
@@ -20,13 +19,11 @@ export class TableClientsComponent {
 
     deleteClient(id:number){
       this.clientsService.deleteClient(id);
-      this.clients.forEach(element => {
-        console.log(element);
-      });
     }
 
-    updateClient(){
-      this.dialog.open(FormComponent,{height:'500px', width:'500px'})
-      // this.clientsService.updateClient(client)
+    updateClient(client : Client){
+      let modalClient ={client, avaliable:true}
+      this.clientsService.saveDialg(this.dialog.open(FormComponent,
+        {height:'500px', width:'500px',data:modalClient}));
     }
   }
