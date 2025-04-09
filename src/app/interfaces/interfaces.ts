@@ -37,3 +37,18 @@ export interface ModalProduct {
   product: products,
   data: boolean
 }
+
+
+//USER
+
+export interface logginUser {
+  user: string,
+  password: string,
+}
+
+export interface registerUser {
+  user: logginUser,
+  email: string,
+  country: Country,
+  repeatPassword: string
+}

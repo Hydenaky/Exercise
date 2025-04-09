@@ -11,42 +11,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { SelectModule } from 'primeng/select';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { ReactiveFormsModule } from '@angular/forms';
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+import { Dialog } from 'primeng/dialog';
 
 
 // de aqui pa bajo
@@ -69,7 +34,8 @@ const MaterialComponents=[
     IconFieldModule,
     InputIconModule,
     ToggleSwitchModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    Dialog
 ]
 @NgModule({
 

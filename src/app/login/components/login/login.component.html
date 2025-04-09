@@ -1,0 +1,8 @@
+<div class="login">
+    <app-form *ngIf="active"></app-form>
+    <app-register-form *ngIf="active == false"></app-register-form>
+</div>
+<div class="reg">
+    <p-button icon="pi pi-user" label="Register" (onClick)="registerRedirect()" id="lgBttn" [ngClass]="'disableButton'" *ngIf="active"/>
+    <p-button icon="pi pi-user" label="Login" (onClick)="registerRedirect()" id="lgBttn" [ngClass]="'disableButton'" *ngIf="active == false"/>
+</div>

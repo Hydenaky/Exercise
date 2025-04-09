@@ -1,0 +1,33 @@
+<form [formGroup]="form" class="form">
+    <h1>Register</h1>
+    <label style="color: red;" *ngIf="userValid || emailValid">{{userValid ? 'User in Use' : ''}} / {{ emailValid ? 'Email in Use' : ''}}</label>
+    <p-inputgroup>
+        <input pInputText placeholder="User" formControlName="user" />
+    </p-inputgroup>
+
+    <p-inputgroup>
+        <input pInputText placeholder="Email" formControlName="email" />
+    </p-inputgroup>
+
+
+    <p-inputgroup>
+        <p-inputgroup-addon *ngIf="form.value.country">
+            <i>{{form.value.country.code}}</i>
+        </p-inputgroup-addon>
+        <p-select [options]="countries" optionLabel="name" placeholder="Country" (onChange)="event()"
+            formControlName="country" />
+        <p-inputgroup-addon *ngIf="form.value.country">
+            {{foreing ? 'Foreing' : 'Local'}}
+        </p-inputgroup-addon>
+    </p-inputgroup>
+
+    <p-inputgroup>
+        <input pInputText placeholder="Password" formControlName="password" />
+    </p-inputgroup>
+
+    <p-inputgroup>
+        <input pInputText placeholder="Password" formControlName="repeatPassword" />
+    </p-inputgroup>
+
+    <p-button icon="pi pi-user" label="Register" (onClick)="register()" id="lgBttn"/>
+</form>

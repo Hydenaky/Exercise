@@ -3,6 +3,10 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
+    path: 'login',
+    loadChildren: () => import('./login/login.module').then(chilRout => chilRout.LoginModule)
+  },
+  {
     path:'clients',
     loadChildren:()=>import('./clients/clients.module').then(childRout =>childRout.ClientsModule)
   },
@@ -12,7 +16,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'clients'
+    redirectTo: 'login'
   }
 ];
 
