@@ -1,0 +1,30 @@
+<div style="background-color: rgb(33, 32, 32);display: flex;justify-content: center;flex-direction: column;align-items: center; height: 100%">
+    <form [formGroup]="form" style="display: flex; flex-direction: column; justify-content: space-between; height: 50%; width: 50%; gap: 5%; margin-bottom: 20%;">
+        <h1 style="text-align: center;">{{'ADD PRODUCT'}}</h1>
+
+        <p-inputgroup>
+            <input pInputText placeholder="Name" formControlName="name" />
+        </p-inputgroup>
+
+        <p-inputgroup>
+            <input pInputText placeholder="Provider" formControlName="provider" />
+        </p-inputgroup>
+
+        <p-inputgroup>
+            <p-toggleswitch formControlName="taxes"></p-toggleswitch>
+        </p-inputgroup>
+
+        <p-inputgroup>
+            <p-toggleswitch formControlName="avaliable"></p-toggleswitch>
+        </p-inputgroup>
+
+        <p-inputgroup>
+            <p-inputnumber type="number" formControlName="price" />
+            <p-inputgroup-addon>$</p-inputgroup-addon>
+        </p-inputgroup>
+
+        <div style="text-align: center;">
+            <p-button (onClick)="save(data.data)">{{'Create'}}</p-button>
+        </div>
+    </form>
+</div>

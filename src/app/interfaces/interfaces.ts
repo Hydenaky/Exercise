@@ -1,3 +1,4 @@
+//CLIENTS
 export interface DocumentType {
   name: string,
   code: string
@@ -19,4 +20,20 @@ export interface Client {
 export interface ModalClient {
   client: Client,
   avaliable: boolean
+}
+
+
+//PRODUCTS
+export interface products {
+  id: number,
+  name: string,
+  provider: string,
+  taxes: boolean,
+  avaliable: boolean,
+  price: number
+}
+
+export interface ModalProduct {
+  product: products,
+  data: boolean
 }

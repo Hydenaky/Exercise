@@ -1,0 +1,33 @@
+<div class="card">
+    <p-table [value]="products" [tableStyle]="{ 'min-width': '50rem' }">
+        <ng-template #header>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Provider</th>
+                <th>Taxes</th>
+                <th>Avaliable</th>
+                <th>Price</th>
+            </tr>
+        </ng-template>
+        <ng-template #body let-product>
+            <tr>
+                <td>{{product.id}}</td>
+                <td>{{product.name }}</td>
+                <td>{{product.provider }}</td>
+                <td>
+                    <p-toggleswitch [(ngModel)]="product.taxes"></p-toggleswitch>
+                </td>
+                <td>
+                    <p-toggleswitch [(ngModel)]="product.avaliable"></p-toggleswitch>
+                </td>
+                <td>{{product.price }}</td>
+                <td>
+                    <p-button icon="pi pi-cog " aria-label="Save" class="botonw" type="submit"
+                        (onClick)="update(product)"></p-button>
+                    <p-button icon=" pi pi-trash" (onClick)="delete(product.id)" />
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
