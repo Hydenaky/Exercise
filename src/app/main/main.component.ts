@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ServicesService } from '../login/services/services.service';
 
@@ -8,11 +8,19 @@ import { ServicesService } from '../login/services/services.service';
   templateUrl: './main.component.html',
   styleUrl: './main.component.scss'
 })
-export class MainComponent {
-  buttonsValid: boolean;
+export class MainComponent implements OnInit{
+  buttonsValid: boolean = true;
   constructor(private router: Router, private service: ServicesService){
-    this.buttonsValid = this.service.buttonsValid;
   }
+
+  ngOnInit() {
+    if (this.router.url == '/') {
+      this.buttonsValid = false;
+    } else {
+      this.buttonsValid = true;
+    }
+  }
+
   clients(){
     this.router.navigate(["main/clients"])
   }

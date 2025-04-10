@@ -34,7 +34,6 @@ export class ServicesService {
   public valid: boolean;
   public userValid: boolean = false;
   public emailValid: boolean = false;
-  public buttonsValid: boolean;
   constructor(private router: Router) {}
 
   register(user: registerUser){
@@ -43,14 +42,10 @@ export class ServicesService {
     if (id>=0 && ( user.user.user === this.users[id]?.user?.user || user.user.user === this.users[id]?.email)) {
       if(user.user.user === this.users[id]?.user?.user){
         this.userValid = true;
-      } /*else {
-        this.userValid = false;
-      }*/
+      }
       if (user.user.user === this.users[id]?.email) {
         this.emailValid = true;
-      } /*else {
-        this.emailValid = false;
-      }*/
+      }
     } else {
       console.log(false);
       const newUser = {...user}
@@ -65,16 +60,11 @@ export class ServicesService {
       if(user.user === this.users[id].user.user || user.user === this.users[id].email && user.user !== ''){
         this.router.navigate(['/main/clients']);
         this.valid = false;
-        this.buttonsValid =  true;
-        console.log(this.buttonsValid);
-        
       }else{
         this.valid = true;
-        this.buttonsValid =  false;
       }
     } catch (TypeError) {      
       this.valid = true;
-      this.buttonsValid =  false;
     }
   }
 }

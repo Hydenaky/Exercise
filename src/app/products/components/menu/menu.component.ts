@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { ModalProduct, products } from '../../../interfaces/interfaces';
 import { ServiceService } from '../../services/service.service';
 import { FormComponent } from '../form/form.component';
 import { MatDialog } from '@angular/material/dialog';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-menu',
@@ -10,10 +11,14 @@ import { MatDialog } from '@angular/material/dialog';
   templateUrl: './menu.component.html',
   styleUrl: './menu.component.scss'
 })
-export class MenuComponent {
-  products: products[]
+export class MenuComponent implements OnDestroy{
+  products: products[];
+  subscription: Subscription | undefined;
   constructor(private Service: ServiceService, public dialog: MatDialog) {
-    this.Service.products$.subscribe(product=> this.products = product);    
+    this.subscription = this.Service.products$.subscribe(product=> this.products = product);    
+  }
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe;
   }
 
   update(product: products){

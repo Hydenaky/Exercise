@@ -8,11 +8,4 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  constructor(private router: Router, private route: ActivatedRoute){}
-  clients(){
-    this.router.navigate(['/clients'], { relativeTo: this.route });
-  }
-  products(){
-    this.router.navigate(['/products'], { relativeTo: this.route });
-  }
 }

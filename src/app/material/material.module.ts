@@ -12,7 +12,9 @@ import { SelectModule } from 'primeng/select';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Dialog } from 'primeng/dialog';
-
+import { Toolbar } from 'primeng/toolbar';
+import { AvatarModule } from 'primeng/avatar';
+import { SharedModule } from 'primeng/api';
 
 // de aqui pa bajo
 import { TableModule } from 'primeng/table';
@@ -35,7 +37,10 @@ const MaterialComponents=[
     InputIconModule,
     ToggleSwitchModule,
     ReactiveFormsModule,
-    Dialog
+    Dialog,
+    Toolbar,
+    AvatarModule,
+    SharedModule
 ]
 @NgModule({
 
