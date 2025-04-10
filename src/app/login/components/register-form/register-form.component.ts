@@ -41,7 +41,6 @@ register(){
   const register: registerUser = {user: {user: this.form.value.user, password: this.form.value.password}, email: this.form.value.email, repeatPassword: this.form.value.repeatPassword, country: this.form.value.country}
   this.userValid = false
   this.emailValid = false
-  console.log(this.emailValid, this.userValid);
   
   this.service.register(register)
   if (this.service.userValid) {

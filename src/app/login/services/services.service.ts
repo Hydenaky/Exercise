@@ -38,25 +38,29 @@ export class ServicesService {
 
   register(user: registerUser){
     this.users = this.userSubject.value;
-    let id: number = this.users.findIndex(u => u.user)    
-    if (id>=0 && ( user.user.user === this.users[id]?.user?.user || user.user.user === this.users[id]?.email)) {
+    let id: number = this.users.findIndex(u => u.user.user == user.user.user || u.email == user.email)
+    
+    if (id>=0 && (user.user.user === this.users[id]?.user?.user || user.email === this.users[id]?.email)) {
       if(user.user.user === this.users[id]?.user?.user){
         this.userValid = true;
+      } else {
+        this.userValid =false
       }
-      if (user.user.user === this.users[id]?.email) {
+      if (user.email === this.users[id]?.email) {
         this.emailValid = true;
+      } else {
+        this.emailValid = false
       }
     } else {
-      console.log(false);
       const newUser = {...user}
       this.userSubject.next([...this.userSubject.getValue(),newUser]);
-      this.router.navigate(['/clients']);
+      this.router.navigate(['main/clients']);
     }
   }
   loggin(user: logginUser){
     this.users = this.userSubject.value;
     try {
-      let id: number = this.users.findIndex(u => u.user)
+      let id: number = this.users.findIndex(u => u.user.user == user.user)
       if(user.user === this.users[id].user.user || user.user === this.users[id].email && user.user !== ''){
         this.router.navigate(['/main/clients']);
         this.valid = false;
