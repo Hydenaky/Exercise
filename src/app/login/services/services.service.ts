@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class ServicesService {
-  private userSubject = new BehaviorSubject<registerUser[]>([{user: {user: 'A', password: '123'}, email: 'B', country: {name: 'Colombia', code: 'CO'}, repeatPassword: '123'}])
+  private userSubject = new BehaviorSubject<registerUser[]>([{user: {user: 'A', password: 'A'}, email: 'B', country: {name: 'Colombia', code: 'CO'}, repeatPassword: '123'}])
   users: registerUser[];
   countries: Country[] = [
       { name: 'Colombia', code: 'CO' },
@@ -31,9 +31,10 @@ export class ServicesService {
       { name: 'Venezuela', code: 'VE' },
       { name: 'Uruguay', code: 'UY' }
     ];
-  public valid: boolean = false;
+  public valid: boolean;
   public userValid: boolean = false;
   public emailValid: boolean = false;
+  public buttonsValid: boolean;
   constructor(private router: Router) {}
 
   register(user: registerUser){
@@ -62,13 +63,18 @@ export class ServicesService {
     try {
       let id: number = this.users.findIndex(u => u.user)
       if(user.user === this.users[id].user.user || user.user === this.users[id].email && user.user !== ''){
-        this.router.navigate(['/clients']);
+        this.router.navigate(['/main/clients']);
         this.valid = false;
+        this.buttonsValid =  true;
+        console.log(this.buttonsValid);
+        
       }else{
         this.valid = true;
+        this.buttonsValid =  false;
       }
     } catch (TypeError) {      
       this.valid = true;
+      this.buttonsValid =  false;
     }
   }
 }

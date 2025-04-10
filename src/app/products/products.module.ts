@@ -13,11 +13,14 @@ import { MaterialModule } from '../material/material.module';
     MenuComponent,
     FormComponent,
     ProductsComponent,
+    MenuComponent,
+    FormComponent
   ],
   imports: [
     CommonModule,
     ProductsRoutingModule,
-    MaterialModule
+    MaterialModule,
+    
   ]
 })
 export class ProductsModule { }
